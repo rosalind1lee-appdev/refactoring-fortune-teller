@@ -1,5 +1,18 @@
 class DiceController < ApplicationController
 
+  def x_y
+    @x = params.fetch("zebra").to_i
+    @y = params.fetch("giraffe").to_i
+
+    @array_of_rolls = Array.new
+
+    @x.times do
+      @array_of_rolls.push(rand(@y) + 1)
+    end
+
+    render({:template => "dice_templates/x_y.html.erb"})
+  end
+
   def one_six
     @array_of_rolls = Array.new
 
